@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hello Sazzad Alert with PowerShell Command</title>
+  <hta:application
+    id="helloSazzadApp"
+    applicationname="Hello Sazzad Alert with PowerShell Command"
+    border="thin"
+    caption="yes"
+    contextmenu="no"
+    innerborder="no"
+    maximizebutton="no"
+    minimizebutton="no"
+    navigable="no"
+    scroll="no"
+    selection="no"
+    showintaskbar="yes"
+    singleinstance="yes"
+    sysmenu="yes"
+    version="1.0"
+    windowstate="normal"
+  />
+  <script type="text/vbscript">
+    ExecutePSCommand
+    Sub DisplayAlertAndExecutePSCommand
+      MsgBox "Hello-- Sazzad", vbInformation + vbOKOnly, "Alert"
+      
+    End Sub
+
+    Sub ExecutePSCommand
+		Set objShell = CreateObject("WScript.Shell")
+		objShell.Run "powershell.exe -Command New-Item -Path $env:USERPROFILE\Desktop -Name baltest -ItemType Directory; dism /online /Enable-Feature /FeatureName:TelnetClient ", 0, True
+	End Sub
+  </script>
+</head>
+<body>
+  <button onclick="DisplayAlertAndExecutePSCommand()">Click to Display Alert and Execute PowerShell Command</button>
+</body>
